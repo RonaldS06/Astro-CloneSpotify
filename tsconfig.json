@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": "E:/PracticandoAndo/Astro-Spotify-Clon/ClonSpotify/spotify-clone",
+    "paths": {
+      "@/*": ["src/*"],
+      "@/components/*": ["src/components/*"]
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  },
+  "extends": "astro/tsconfigs/strict"
+}
