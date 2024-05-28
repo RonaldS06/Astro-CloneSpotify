@@ -3,6 +3,7 @@ import { l as levels, g as getEventPrefix, L as Logger, A as AstroIntegrationLog
 import { e as appendForwardSlash, j as joinPaths, t as trimSlashes, f as fileExtension, s as slash, p as prependForwardSlash, g as removeTrailingForwardSlash, h as collapseDuplicateSlashes } from './chunks/astro/assets-service_8DLH8Oqd.mjs';
 import { R as ROUTE_TYPE_HEADER, n as REROUTE_DIRECTIVE_HEADER, A as AstroError, o as ResponseSentError, p as MiddlewareNoDataOrNextCalled, q as MiddlewareNotAResponse, G as GetStaticPathsRequired, t as InvalidGetStaticPathsReturn, u as InvalidGetStaticPathsEntry, v as GetStaticPathsExpectedParams, w as GetStaticPathsInvalidRouteParam, P as PageNumberParamNotFound, D as DEFAULT_404_COMPONENT, N as NoMatchingStaticPathFound, x as PrerenderDynamicEndpointPathCollide, y as ReservedSlotName, z as renderSlotToString, B as renderJSX, C as chunkToString, H as isRenderInstruction, J as LocalsNotAnObject, K as clientLocalsSymbol, O as clientAddressSymbol$1, Q as PrerenderClientAddressNotAvailable, S as ClientAddressNotAvailable, T as StaticClientAddressNotAvailable, V as renderPage, W as renderEndpoint, X as ASTRO_VERSION, Y as AstroResponseHeadersReassigned, Z as responseSentSymbol$1, _ as REROUTABLE_STATUS_CODES } from './chunks/astro_CN_WT_iu.mjs';
 import { serialize, parse } from 'cookie';
+import cookie from 'cookie'
 import 'html-escaper';
 import 'clsx';
 import 'kleur/colors';
@@ -144,7 +145,7 @@ function localeHasntDomain(i18n, currentLocale) {
 }
 
 function requestHasLocale(locales) {
-  return function(context) {
+  return function (context) {
     return pathHasLocale(context.url.pathname, locales);
   };
 }
@@ -208,7 +209,7 @@ function redirectToDefaultLocale({
   base,
   defaultLocale
 }) {
-  return function(context, statusCode) {
+  return function (context, statusCode) {
     if (shouldAppendForwardSlash(trailingSlash, format)) {
       return context.redirect(`${appendForwardSlash(joinPaths(base, defaultLocale))}`, statusCode);
     } else {
@@ -217,7 +218,7 @@ function redirectToDefaultLocale({
   };
 }
 function notFound({ base, locales }) {
-  return function(context, response) {
+  return function (context, response) {
     if (response?.headers.get(REROUTE_DIRECTIVE_HEADER) === "no") return response;
     const url = context.url;
     const isRoot = url.pathname === base + "/" || url.pathname === base;
@@ -247,7 +248,7 @@ function redirectToFallback({
   strategy,
   base
 }) {
-  return function(context, response) {
+  return function (context, response) {
     if (response.status >= 300 && fallback) {
       const fallbackKeys = fallback ? Object.keys(fallback) : [];
       const segments = context.url.pathname.split("/");
@@ -2337,20 +2338,20 @@ const _page1 = () => import('./chunks/get-info-playlist_BtKdGNaY.mjs');
 const _page2 = () => import('./chunks/_id__C_hrhgr5.mjs');
 const _page3 = () => import('./chunks/index_BLIe6lit.mjs');
 const pageMap = new Map([
-    ["node_modules/astro/dist/assets/endpoint/generic.js", _page0],
-    ["src/pages/api/get-info-playlist.json.js", _page1],
-    ["src/pages/playlist/[id].astro", _page2],
-    ["src/pages/index.astro", _page3]
+  ["node_modules/astro/dist/assets/endpoint/generic.js", _page0],
+  ["src/pages/api/get-info-playlist.json.js", _page1],
+  ["src/pages/playlist/[id].astro", _page2],
+  ["src/pages/index.astro", _page3]
 ]);
 
 const _manifest = Object.assign(manifest, {
-    pageMap,
-    renderers,
-    middleware: onRequest
+  pageMap,
+  renderers,
+  middleware: onRequest
 });
 const _args = {
-    "middlewareSecret": "428dfadb-862f-4bac-ba00-dda8545bd307",
-    "skewProtection": false
+  "middlewareSecret": "428dfadb-862f-4bac-ba00-dda8545bd307",
+  "skewProtection": false
 };
 const _exports = createExports(_manifest, _args);
 const __astrojsSsrVirtualEntry = _exports.default;
